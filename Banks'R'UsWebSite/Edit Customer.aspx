@@ -45,7 +45,7 @@
                     <asp:DropDownList ID="AccountDDL" runat="server" Width="200px" OnSelectedIndexChanged="AccountDDL_SelectedIndexChanged">
                     <asp:ListItem Text="Account Management" Value="0"></asp:ListItem>
                     <asp:ListItem Text="New Account" Value="New Account.aspx"></asp:ListItem>
-                    <asp:ListItem Text="Edit Account" Value="Edit Account Selection.aspx"></asp:ListItem>
+                    <asp:ListItem Text="Edit Account" Value="Edit Account.aspx"></asp:ListItem>
                     <asp:ListItem Text="Delete Account" Value="Delete Account.aspx"></asp:ListItem>
                     <asp:ListItem Text="Deposit" Value="Deposit.aspx"></asp:ListItem>
                     <asp:ListItem Text="Withdraw" Value="Withdraw.aspx"></asp:ListItem>
@@ -77,38 +77,6 @@
                             </td>
                             <td>
                                 <asp:TextBox ID="CusID" runat="server" Width="128px" />
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                First Name:
-                            </td>
-                            <td>
-                                <asp:Label ID="CusFirstName" runat="server" Width="128px" />
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                Last Name:
-                            </td>
-                            <td>
-                                <asp:Label ID="CusLastName" runat="server" />
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                Gender:
-                            </td>
-                            <td>
-                                <asp:Label ID="CusGender" runat="server" />
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                Date of Birth:
-                            </td>
-                            <td>
-                                <asp:Label ID="CusDateOfBirth" runat="server" />
                             </td>
                         </tr>
                         <tr>
@@ -148,7 +116,25 @@
                                 Phone Number:
                             </td>
                             <td>
-                                <asp:TextBox ID="CusPhone" runat="server" />
+                                <table>
+                                    <tr>
+                                        <td>
+                                            <asp:TextBox ID="CusPhoneAC" runat="server" />
+                                        </td>
+                                        <td>
+                                            -
+                                        </td>
+                                        <td>
+                                            <asp:TextBox ID="CusPhoneCO" runat="server" />
+                                        </td>
+                                        <td>
+                                            -
+                                        </td>
+                                        <td>
+                                            <asp:TextBox ID="CusPhoneLine" runat="server" />
+                                        </td>
+                                    </tr>
+                                </table>
                             </td>
                         </tr>
                         <tr>

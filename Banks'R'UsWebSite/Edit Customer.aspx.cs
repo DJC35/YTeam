@@ -11,11 +11,7 @@ public partial class Edit_Customer : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         SqlConnection dbConnection = new SqlConnection("Data Source=stusql;Initial Catalog=ITP262_Banks_R_Us;Integrated Security=true");
-    string cusID;
-        string cusFName;
-        string cusLName;
-        string cusGender;
-        string cusDOB;
+        string cusID;
         string cusAddress;
         string cusCity;
         string cusState;
@@ -25,15 +21,10 @@ public partial class Edit_Customer : System.Web.UI.Page
         string cusPhoneLine;
         string cusEmail;
         string cusPassword;
-	string cusID;
 	
         if (Page.IsPostBack)
         {
 	    cusID = CusID.Text;
-            cusFName = CusFirstName.Text;
-            cusLName = CusLastName.Text;
-            cusGender = CusGender.SelectedValue;
-            cusDOB = CusDateOfBirth.ToString();
             cusAddress = CusAddress.Text;
             cusCity = CusCity.Text;
             cusState = CusState.Text;
@@ -42,7 +33,6 @@ public partial class Edit_Customer : System.Web.UI.Page
             cusPhoneCO = CusPhoneCO.Text;
             cusPhoneLine = CusPhoneLine.Text;
             cusEmail = CusEmail.Text;
-            cusPassword = CusPassword.Text;
         }
     }
 

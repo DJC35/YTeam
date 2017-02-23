@@ -44,7 +44,7 @@
                     <asp:DropDownList ID="AccountDDL" runat="server" Width="200px" OnSelectedIndexChanged="AccountDDL_SelectedIndexChanged">
                     <asp:ListItem Text="Account Management" Value="0"></asp:ListItem>
                     <asp:ListItem Text="New Account" Value="New Account.aspx"></asp:ListItem>
-                    <asp:ListItem Text="Edit Account" Value="Edit Account Selection.aspx"></asp:ListItem>
+                    <asp:ListItem Text="Edit Account" Value="Edit Account.aspx"></asp:ListItem>
                     <asp:ListItem Text="Delete Account" Value="Delete Account.aspx"></asp:ListItem>
                     <asp:ListItem Text="Deposit" Value="Deposit.aspx"></asp:ListItem>
                     <asp:ListItem Text="Withdraw" Value="Withdraw.aspx"></asp:ListItem>
