@@ -37,7 +37,7 @@
                     <asp:DropDownList ID="CustomerDDL" runat="server" Width="200px" OnSelectedIndexChanged="CustomerDDL_SelectedIndexChanged">
                     <asp:ListItem Text="Customer Management" Value="0"></asp:ListItem>
                     <asp:ListItem Text="New Customer" Value="New Customer.aspx"></asp:ListItem>
-                    <asp:ListItem Text="Edit Customer" Value="Edit Customer Selection.aspx"></asp:ListItem>
+                    <asp:ListItem Text="Edit Customer" Value="Edit Customer.aspx"></asp:ListItem>
                     <asp:ListItem Text="Delete Customer" Value="Delete Customer.aspx"></asp:ListItem>
                     </asp:DropDownList>
                 </td>

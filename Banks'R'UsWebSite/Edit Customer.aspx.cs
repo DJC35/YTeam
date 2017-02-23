@@ -8,32 +8,20 @@ using System.Data.SqlClient;
 
 public partial class Edit_Customer : System.Web.UI.Page
 {
+    SqlConnection dbConnection = new SqlConnection("Data Source=stusql;Initial Catalog=ITP262_Banks_R_Us;Integrated Security=true");
+    string cusID;
+    string cusAddress;
+    string cusCity;
+    string cusState;
+    int cusPINCode;
+    string cusPhoneAC;
+    string cusPhoneCO;
+    string cusPhoneLine;
+    string cusEmail;
+
     protected void Page_Load(object sender, EventArgs e)
     {
-        SqlConnection dbConnection = new SqlConnection("Data Source=stusql;Initial Catalog=ITP262_Banks_R_Us;Integrated Security=true");
-        string cusID;
-        string cusAddress;
-        string cusCity;
-        string cusState;
-        int cusPINCode;
-        string cusPhoneAC;
-        string cusPhoneCO;
-        string cusPhoneLine;
-        string cusEmail;
-        string cusPassword;
-	
-        if (Page.IsPostBack)
-        {
-	    cusID = CusID.Text;
-            cusAddress = CusAddress.Text;
-            cusCity = CusCity.Text;
-            cusState = CusState.Text;
-            cusPINCode = Int32.Parse(CusPIN.Text);
-            cusPhoneAC = CusPhoneAC.Text;
-            cusPhoneCO = CusPhoneCO.Text;
-            cusPhoneLine = CusPhoneLine.Text;
-            cusEmail = CusEmail.Text;
-        }
+
     }
 
     protected void CustomerDDL_SelectedIndexChanged(object sender, EventArgs e)
@@ -53,33 +41,51 @@ public partial class Edit_Customer : System.Web.UI.Page
 
     protected void SubmitButton(object sender, EventArgs e)
     {
-	dbConnection.Open();
 
-		SqlCommand editCustomer = new SqlCommand("UPDATE CUSTOMER SET "
-		+ "CUSTOMER_ADDRESS = " + cusAddress + ","
-		+ "CUSTOMER_CITY = " + cusCity + ","
-		+ "CUSTOMER_STATE = " + cusState + ","
-		+ "CUSTOMER_PIN = " + cusPINCode + ","
-		+ "CUSTOMER_AREACODE = " + cusPhoneAC +","
-		+ "CUSTOMER_CO = " + cusPhoneCO + ","
-		+ "CUSTOMER_Line = " + cusPhoneLine + ","
-		+ "CUSTOMER_EMAIL = " + cusEmail + ","
-		+ "WHERE CUSTOMER_ID = " + cusID +";");
+        cusID = CusID.Text;
+        cusAddress = CusAddress.Text;
+        cusCity = CusCity.Text;
+        cusState = CusState.Text;
+        cusPINCode = Int32.Parse(CusPIN.Text);
+        cusPhoneAC = CusPhoneAC.Text;
+        cusPhoneCO = CusPhoneCO.Text;
+        cusPhoneLine = CusPhoneLine.Text;
+        cusEmail = CusEmail.Text;
 
-    	    dbConnection.Close();
+        try
+        {
+            dbConnection.Open();
+
+            SqlCommand editCustomer = new SqlCommand("UPDATE CUSTOMER SET "
+            + "CUSTOMER_ADDRESS = '" + cusAddress + "',"
+            + "CUSTOMER_CITY = '" + cusCity + "',"
+            + "CUSTOMER_STATE = '" + cusState + "',"
+            + "CUSTOMER_PIN = '" + cusPINCode + "',"
+            + "CUSTOMER_AREACODE = '" + cusPhoneAC + "',"
+            + "CUSTOMER_CO = '" + cusPhoneCO + "',"
+            + "CUSTOMER_Line = '" + cusPhoneLine + "',"
+            + "CUSTOMER_EMAIL = '" + cusEmail + "' "
+            + "WHERE CUSTOMER_ID = '" + cusID + "';", dbConnection);
+
+            editCustomer.ExecuteNonQuery();
+            dbConnection.Close();
+        }
+        catch(SqlException sqle)
+        {
+            Response.Write(sqle.Message);
+        }
     }
     
     protected void ResetButton(object sender, EventArgs e)
     {
-	CusID.Text = "";
-	CusAddress.Text = "";
-	CusCity.Text = "";
-	CusState.Text = "";
-	CusPIN.Text = "";
-	CusPhoneAC.Text = "";
-	CusPhoneCO.Text = "";
-	CusPhoneLine.Text = "";
-	CusEmail.Text = "";
-	CusPassword.Text = "";
+	    CusID.Text = "";
+	    CusAddress.Text = "";
+	    CusCity.Text = "";
+	    CusState.Text = "";
+	    CusPIN.Text = "";
+	    CusPhoneAC.Text = "";
+	    CusPhoneCO.Text = "";
+	    CusPhoneLine.Text = "";
+	    CusEmail.Text = "";
     }
 }

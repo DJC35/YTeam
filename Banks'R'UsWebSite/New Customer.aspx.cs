@@ -8,43 +8,26 @@ using System.Data.SqlClient;
 
 public partial class New_Customer : System.Web.UI.Page
 {
+    SqlConnection dbConnection = new SqlConnection("Data Source=stusql;Initial Catalog=ITP262_Banks_R_Us;Integrated Security=true");
+    string cusFName;
+    string cusLName;
+    string cusGender;
+    string cusDOB;
+    string cusAddress;
+    string cusCity;
+    string cusState;
+    int cusPINCode;
+    string cusPhoneAC;
+    string cusPhoneCO;
+    string cusPhoneLine;
+    string cusEmail;
+    string cusPassword;
+    int cusID;
+    Random rnd = new Random();
+
     protected void Page_Load(object sender, EventArgs e)
     {
-        SqlConnection dbConnection = new SqlConnection("Data Source=stusql;Initial Catalog=ITP262_Banks_R_Us;Integrated Security=true");
-        string cusFName;
-        string cusLName;
-        string cusGender;
-        string cusDOB;
-        string cusAddress;
-        string cusCity;
-        string cusState;
-        int cusPINCode;
-        string cusPhoneAC;
-        string cusPhoneCO;
-        string cusPhoneLine;
-        string cusEmail;
-        string cusPassword;
-        
 
-
-        if (Page.IsPostBack)
-        {
-            cusFName = CusFirstName.Text;
-            cusLName = CusLastName.Text;
-            cusGender = CusGender.SelectedValue;
-            cusDOB = CusDateOfBirth.ToString();
-            cusAddress = CusAddress.Text;
-            cusCity = CusCity.Text;
-            cusState = CusState.Text;
-            cusPINCode = Int32.Parse(CusPIN.Text);
-            cusPhoneAC = CusPhoneAC.Text;
-            cusPhoneCO = CusPhoneCO.Text;
-            cusPhoneLine = CusPhoneLine.Text;
-            cusEmail = CusEmail.Text;
-            cusPassword = CusPassword.Text;
-
-            
-        }
     }
 
     protected void CustomerDDL_SelectedIndexChanged(object sender, EventArgs e)
@@ -64,38 +47,64 @@ public partial class New_Customer : System.Web.UI.Page
     
     protected void SubmitButton(object sender, EventArgs e)
     {
-        dbConnection.Open();
+        
+        cusFName = CusFirstName.Text;
+        cusLName = CusLastName.Text;
+        cusGender = CusGender.SelectedValue;
+        cusDOB = CusDateOfBirth.SelectedDate.ToString();
+        cusAddress = CusAddress.Text;
+        cusCity = CusCity.Text;
+        cusState = CusState.Text;
+        cusPINCode = Int32.Parse(CusPIN.Text);
+        cusPhoneAC = CusPhoneAC.Text;
+        cusPhoneCO = CusPhoneCO.Text;
+        cusPhoneLine = CusPhoneLine.Text;
+        cusEmail = CusEmail.Text;
+        cusPassword = CusPassword.Text;
+        cusID = rnd.Next(1, 99999);
 
-            SqlCommand insertNewCustomer = new SqlCommand("INSERT INTO CUSTOMER VALUES("
-                + cusFName + ","
-                + cusLName + ","
-                + cusGender + ","
-                + cusDOB + ","
-                + cusAddress + ","
-                + cusCity + ","
-                + cusState + ","
-                + cusPINCode + ","
-                + cusPhoneAC + ","
-                + cusPhoneCO + ","
-                + cusPhoneLine + ","
-                + cusEmail + ","
-                + cusPassword + ","
-                + ");");
+        try
+        {
+            dbConnection.Open();
 
+            SqlCommand insertNewCustomer = new SqlCommand("INSERT INTO CUSTOMER VALUES(" 
+                + cusID + ",'"
+                + cusFName + "','"
+                + cusLName + "','"
+                + cusGender + "','"
+                + cusDOB + "','"
+                + cusAddress + "','"
+                + cusCity + "','"
+                + cusState + "','"
+                + cusPINCode + "','"
+                + cusPhoneAC + "','"
+                + cusPhoneCO + "','"
+                + cusPhoneLine + "','"
+                + cusEmail + "','"
+                + cusPassword
+                + "');", dbConnection);
+
+            insertNewCustomer.ExecuteNonQuery();
             dbConnection.Close();
+        }
+        catch(SqlException sqle)
+        {
+            Response.Write(sqle.Message + " " + cusDOB);
+        }
     }
     protected void ResetButton(object sender, EventArgs e)
     {
-        CusID.Text = "";
-	CusAddress.Text = "";
-	CusCity.Text = "";
-	CusState.Text = "";
-	CusPIN.Text = "";
-	CusPhoneAC.Text = "";
-	CusPhoneCO.Text = "";
-	CusPhoneLine.Text = "";
-	CusEmail.Text = "";
-	CusPassword.Text = "";
+        CusFirstName.Text = "";
+        CusLastName.Text = "";
+	    CusAddress.Text = "";
+	    CusCity.Text = "";
+	    CusState.Text = "";
+	    CusPIN.Text = "";
+	    CusPhoneAC.Text = "";
+	    CusPhoneCO.Text = "";
+	    CusPhoneLine.Text = "";
+	    CusEmail.Text = "";
+	    CusPassword.Text = "";
     }
 
 }

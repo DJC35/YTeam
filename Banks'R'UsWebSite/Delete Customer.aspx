@@ -37,7 +37,7 @@
                     <asp:DropDownList ID="CustomerDDL" runat="server" Width="200px" OnSelectedIndexChanged="CustomerDDL_SelectedIndexChanged">
                     <asp:ListItem Text="Customer Management" Value="0"></asp:ListItem>
                     <asp:ListItem Text="New Customer" Value="New Customer.aspx"></asp:ListItem>
-                    <asp:ListItem Text="Edit Customer" Value="Edit Customer Selection.aspx"></asp:ListItem>
+                    <asp:ListItem Text="Edit Customer" Value="Edit Customer.aspx"></asp:ListItem>
                     <asp:ListItem Text="Delete Customer" Value="Delete Customer.aspx"></asp:ListItem>
                     </asp:DropDownList>
                 </td>
@@ -82,10 +82,10 @@
                         </tr>
                         <tr>
                             <td>
-                                <asp:Button ID="Submit" Text="Submit" runat="server" />
+                                <asp:Button ID="Submit" Text="Submit" runat="server" OnClick="SubmitButton"/>
                             </td>
                             <td>
-                                <asp:Button ID="Reset" Text="Reset" runat="server" />
+                                <asp:Button ID="Reset" Text="Reset" runat="server" OnClick="ResetButton"/>
                             </td>
                         </tr>
                     </table>
