@@ -1,5 +1,4 @@
-﻿<%@ Page Language="C#" %>
-
+﻿<%@ Page Language="C#" CodeFile="DeleteAccount.aspx.cs" Inherits="DeleteAccount"%>
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
@@ -43,12 +42,12 @@
                 <td class="auto-style3">
                     <asp:DropDownList ID="AccountDDL" runat="server" Width="200px" OnSelectedIndexChanged="AccountDDL_SelectedIndexChanged">
                     <asp:ListItem Text="Account Management" Value="0"></asp:ListItem>
-                    <asp:ListItem Text="New Account" Value="1"></asp:ListItem>
-                    <asp:ListItem Text="Edit Account" Value="2"></asp:ListItem>
-                    <asp:ListItem Text="Delete Account" Value="3"></asp:ListItem>
-                    <asp:ListItem Text="Deposit" Value="4"></asp:ListItem>
-                    <asp:ListItem Text="Withdraw" Value="5"></asp:ListItem>
-                    <asp:ListItem Text="Fund Transfer" Value="6"></asp:ListItem>
+                    <asp:ListItem Text="New Account" Value="NewAccount.aspx"></asp:ListItem>
+                    <asp:ListItem Text="Edit Account" Value="EditAccount.aspx"></asp:ListItem>
+                    <asp:ListItem Text="Delete Account" Value="DeleteAccount.aspx"></asp:ListItem>
+                    <asp:ListItem Text="Deposit" Value="Deposit.aspx"></asp:ListItem>
+                    <asp:ListItem Text="Withdraw" Value="Withdraw.aspx"></asp:ListItem>
+                    <asp:ListItem Text="Fund Transfer" Value="FundTransfer.aspx"></asp:ListItem>
                     </asp:DropDownList>
                 </td>
                 <td class="auto-style4">
@@ -59,32 +58,35 @@
                     <asp:ListItem Text="Customized Statement" Value="3"></asp:ListItem>
                     </asp:DropDownList>
                 </td>
+                <td>
+                    <asp:Button ID="Button1" runat="server" Text="Go" />
+                </td>
             </tr>  
             <tr>
                 <td>
                     <!--Output Area-->
                 </td>
                 <td>
-                    <h3>Edit Account</h3>
+                    <h3>Delete Account</h3>
                     <table>
                         <tr>
                             <td>
                                 Account Number
                             </td>
                             <td>
-                                <input id="AccountNumber" type="text" />
+                                <asp:Textbox id="AccountNumber" runat="server" />
                             </td>
                         </tr>
-                        <tr>
+                        
                             
                         <tr>
                             <td>
-                                <input id="Submit" type="button" value="Submit" />
+                                <asp:Button id="Submit"  Text="Submit" onclick="Submit_Click" runat="server" />
                             </td>
                         </tr>
                         <tr>
                             <td>
-                                <input id="Reset" type="button" value="Reset" />
+                                <asp:Button id="Reset"  Text="Reset" onclick="Reset_Click" runat="server" />
                             </td>
                         </tr>
                     </table>

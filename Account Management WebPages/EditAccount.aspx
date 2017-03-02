@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" %>
+﻿<%@ Page Language="C#" CodeFile="EditAccount.aspx.cs" Inherits="EditAccount"%>
 
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
@@ -59,6 +59,9 @@
                     <asp:ListItem Text="Customized Statement" Value="3"></asp:ListItem>
                     </asp:DropDownList>
                 </td>
+                <td>
+                   <asp:Button ID="Button1" runat="server" Text="Go" />
+                </td>
             </tr>  
             <tr>
                 <td>
@@ -72,7 +75,7 @@
                                 Account Number
                             </td>
                             <td>
-                                <input id="AccountNumber" type="text" />
+                                <asp:Textbox id="AccountNumber" runat="server" />
                             </td>
                         </tr>
                         <tr>
@@ -80,7 +83,7 @@
                                 Customer ID
                             </td>
                             <td>
-                                <input id="CustomerID" type="text" />
+                                <asp:Textbox id="CustomerID" runat="server" />
                             </td>
                         </tr>
                         <tr>
@@ -88,26 +91,20 @@
                                 Account Type
                             </td>
                             <td>
-                                <input id="Savings" type="radio" />
-                                <input id="Checking" type="radio" />
+                                <asp:DropDownList ID="AccountType" runat="server">
+                                <asp:ListItem Value="Savings">Savings</asp:ListItem>
+                                <asp:ListItem Value="Checking">Checking</asp:ListItem>
+                                </asp:DropDownList>
                             </td>
                         </tr>
                         <tr>
                             <td>
-                                Initial Deposit
-                            </td>
-                            <td>
-                                <input id="IntialDeposit" type="text" />
+                                <asp:Button id="Submit"  Text="Submit" onclick="Submit_Click" runat="server" />
                             </td>
                         </tr>
                         <tr>
                             <td>
-                                <input id="Submit" type="button" value="Submit" />
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <input id="Reset" type="button" value="Reset" />
+                                <asp:Button id="Reset"  Text="Reset" onclick="Reset_Click" runat="server" />
                             </td>
                         </tr>
                     </table>

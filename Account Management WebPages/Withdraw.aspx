@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" %>
+﻿<%@ Page Language="C#" CodeFile="Withdraw.aspx.cs" Inherits="Withdraw"%>
 
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
@@ -65,7 +65,7 @@
                     <!--Output Area-->
                 </td>
                 <td>
-                    <h3>Edit Account</h3>
+                    <h3>Withdraw</h3>
                     <table>
                         <tr>
                             <td>

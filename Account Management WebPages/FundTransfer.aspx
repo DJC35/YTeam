@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" %>
+﻿<%@ Page Language="C#" CodeFile="FundTransfer.aspx.cs" Inherits="FundTransfer"%>
 
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
@@ -59,20 +59,23 @@
                     <asp:ListItem Text="Customized Statement" Value="3"></asp:ListItem>
                     </asp:DropDownList>
                 </td>
+                <td>
+                   <asp:Button ID="Button1" runat="server" Text="Go" />
+                </td>
             </tr>  
             <tr>
                 <td>
                     <!--Output Area-->
                 </td>
                 <td>
-                    <h3>Edit Account</h3>
+                    <h3>Fund Transfer</h3>
                     <table>
                         <tr>
                             <td>
                                 Payer's Account Number
                             </td>
                             <td>
-                                <input id="PayersAccountNumber" type="text" />
+                                <asp:Textbox id="PayersAccountNumber" runat="server" />
                             </td>
                         </tr>
                         <tr>
@@ -80,7 +83,7 @@
                                 Payee's Account Number
                             </td>
                             <td>
-                                <input id="PayeesAccountNumber" type="text" />
+                                <asp:Textbox id="PayeesAccountNumber" runat="server" />
                             </td>
                         </tr>
                         <tr>
@@ -88,17 +91,17 @@
                                 Amount
                             </td>
                             <td>
-                                <input id="CustomerID" type="text" />
+                                <asp:Textbox id="Amount" runat="server" />
                             </td>
                         </tr>
                         <tr>
                             <td>
-                                <input id="Submit" type="button" value="Submit" />
+                                <asp:Button id="Submit"  Text="Submit" onclick="Submit_Click" runat="server" />
                             </td>
                         </tr>
                         <tr>
                             <td>
-                                <input id="Reset" type="button" value="Reset" />
+                                <asp:Button id="Reset"  Text="Reset" onclick="Reset_Click" runat="server" />
                             </td>
                         </tr>
                     </table>

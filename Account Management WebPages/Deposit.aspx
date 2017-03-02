@@ -1,5 +1,4 @@
-﻿<%@ Page Language="C#" %>
-
+﻿<%@ Page Language="C#" CodeFile="Deposit.aspx.cs" Inherits="Deposit"%>
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
@@ -65,7 +64,7 @@
                     <!--Output Area-->
                 </td>
                 <td>
-                    <h3>Edit Account</h3>
+                    <h3>Deposit</h3>
                     <table>
                         <tr>
                             <td>

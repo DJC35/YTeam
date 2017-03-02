@@ -11,4 +11,19 @@ public partial class Deposit : System.Web.UI.Page
     {
 
     }
+
+    protected void CustomerDDL_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        Response.Redirect(CustomerDDL.SelectedValue);
+    }
+
+    protected void AccountDDL_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        Response.Redirect(AccountDDL.SelectedValue);
+    }
+
+    protected void StatmentDDL_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        Response.Redirect(StatmentDDL.SelectedValue);
+    }
 }
