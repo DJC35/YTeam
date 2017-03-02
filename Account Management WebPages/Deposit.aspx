@@ -1,4 +1,5 @@
 ﻿<%@ Page Language="C#" CodeFile="Deposit.aspx.cs" Inherits="Deposit"%>
+
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
@@ -61,17 +62,17 @@
             </tr>  
             <tr>
                 <td>
-                    <!--Output Area-->
+                    <asp:Label ID="Error" runat="server" Text=" "></asp:Label>
                 </td>
                 <td>
-                    <h3>Deposit</h3>
+                    <h3>Edit Account</h3>
                     <table>
                         <tr>
                             <td>
                                 Account Number
                             </td>
                             <td>
-                                <input id="AccountNumber" type="text" />
+                                <asp:Textbox id="AccountNumber" runat="server" />
                             </td>
                         </tr>
                         <tr>
@@ -79,25 +80,17 @@
                                 Amount
                             </td>
                             <td>
-                                <input id="CustomerID" type="text" />
+                                <asp:Textbox id="Amount" runat="server" />
                             </td>
                         </tr>
                         <tr>
                             <td>
-                                Description
-                            </td>
-                            <td>
-                                <input id="Description" type="text" />
+                                <asp:button id="Submit" Text="Submit" runat="server"/>
                             </td>
                         </tr>
                         <tr>
                             <td>
-                                <input id="Submit" type="button" value="Submit" />
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <input id="Reset" type="button" value="Reset" />
+                                <asp:button id="Reset" Text="Reset" runat="server"/>
                             </td>
                         </tr>
                     </table>

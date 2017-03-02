@@ -24,6 +24,9 @@
         .auto-style6 {
             height: 77px;
         }
+    .auto-style7 {
+        width: 285px;
+    }
     </style>
 </head>
 <body>
@@ -62,9 +65,9 @@
             </tr>  
             <tr>
                 <td>
-                    <!--Output Area-->
+                    <asp:Label ID="Error" runat="server" Text=" "></asp:Label>
                 </td>
-                <td>
+                <td class="auto-style7">
                     <h3>Withdraw</h3>
                     <table>
                         <tr>
@@ -72,7 +75,7 @@
                                 Account Number
                             </td>
                             <td>
-                                <input id="AccountNumber" type="text" />
+                                <asp:Textbox id="AccountNumber" runat="server" />
                             </td>
                         </tr>
                         <tr>
@@ -80,25 +83,17 @@
                                 Amount
                             </td>
                             <td>
-                                <input id="CustomerID" type="text" />
+                                <asp:Textbox id="Amount" runat="server" />
                             </td>
                         </tr>
                         <tr>
                             <td>
-                                Description
-                            </td>
-                            <td>
-                                <input id="Description" type="text" />
+                                <asp:button id="Submit" Text="Submit" runat="server" OnClick="Submit_Click"/>
                             </td>
                         </tr>
                         <tr>
                             <td>
-                                <input id="Submit" type="button" value="Submit" />
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <input id="Reset" type="button" value="Reset" />
+                                <asp:button id="Reset" Text="Reset" runat="server" OnClick="Reset_Click"/>
                             </td>
                         </tr>
                     </table>
@@ -107,6 +102,9 @@
             <tr>
                 <td>
                     <asp:Button ID="Logout" Text="Logout" runat="server" />
+                </td>
+                <td class="auto-style7">
+                    <asp:Label ID="Error" runat="server" Text=" " />
                 </td>
             </tr>
         </table>
