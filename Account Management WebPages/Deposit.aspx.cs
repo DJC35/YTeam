@@ -10,8 +10,10 @@ public partial class Deposit : Page
 {
     SqlConnection dbConnection = new SqlConnection("Data Source=stusql;Initial Catalog=ITP262_Banks_R_Us;Integrated Security=true");
     int accountNum;
-    int amount;
+    float amount;
     int bankAmount;
+    int transactionNum;
+    Random rand = new Random();
 
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -41,7 +43,8 @@ public partial class Deposit : Page
     protected void Submit_Click(object sender, EventArgs e)
     {
         accountNum = int.Parse(AccountNumber.Text);
-        amount = int.Parse(Amount.Text);
+        amount = float.Parse(Amount.Text);
+        transactionNum = rand.Next(1, 99999);
 
         SqlCommand select = new SqlCommand("SELECT ACCOUNT_BALANCE FROM ACCOUNT WHERE ACCOUNT_ID = " + accountNum);
         try
@@ -56,8 +59,9 @@ public partial class Deposit : Page
                 
                 bankAmount += amount;
                 SqlCommand update = new SqlCommand("UPDATE ACCOUNT SET ACCOUNT_BALANCE=" + bankAmount + " WHERE ACCOUNT_ID =" + accountNum);
+                SqlCommand filling = new SqlCommand("INSERT INTO BANK_TRANSACTION VALUES (" + transactionNum + ", " + "CURDATE(), " + amount + ", " + "Deposit, " + accountNum + ");", dbConnection);
                 update.ExecuteNonQuery();
-                
+                filling.ExecuteNonQuery();
             }
             dbConnection.Close();
         }
