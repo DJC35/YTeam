@@ -1,9 +1,9 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Site Template.aspx.cs" Inherits="Site_Template" %>
+﻿<%@ Page Language="C#" CodeFile="Withdraw.aspx.cs" Inherits="Withdraw"%>
 
 <!DOCTYPE html>
-
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
+<meta charset="utf-8" />
     <title>Banks'R'Us</title>    
 <style type="text/css">
         .auto-style1 {
@@ -24,6 +24,9 @@
         .auto-style6 {
             height: 77px;
         }
+    .auto-style7 {
+        width: 285px;
+    }
     </style>
 </head>
 <body>
@@ -65,14 +68,35 @@
             </tr>
             <tr>
                 <td>
-                    <!--Output Area-->
+                    <asp:Label ID="ErrorMessage" runat="server" Text=" "></asp:Label>
                 </td>
-                <td>
-                    <h3><!--Name of Page--></h3>
+                <td class="auto-style7">
+                    <h3>Withdraw</h3>
                     <table>
                         <tr>
                             <td>
-                                <!--Inputs-->
+                                Account Number
+                            </td>
+                            <td>
+                                <asp:Textbox id="AccountNumber" runat="server" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Amount
+                            </td>
+                            <td>
+                                <asp:Textbox id="Amount" runat="server" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <asp:button id="Submit" Text="Submit" runat="server" OnClick="Submit_Click"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <asp:button id="Reset" Text="Reset" runat="server" OnClick="Reset_Click"/>
                             </td>
                         </tr>
                     </table>
@@ -81,6 +105,9 @@
             <tr>
                 <td>
                     <asp:Button ID="Logout" Text="Logout" runat="server" />
+                </td>
+                <td class="auto-style7">
+                    <asp:Label ID="Error" runat="server" Text=" " />
                 </td>
             </tr>
         </table>

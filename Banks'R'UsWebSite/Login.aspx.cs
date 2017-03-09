@@ -11,11 +11,13 @@ public partial class Login : System.Web.UI.Page
     private bool managerLogin = false;
     private bool customerLogin = false;
 
+    SqlConnection dbConnection = new SqlConnection("Data Source=stusql;Initial Catalog=ITP262_Banks_R_Us;Integrated Security=true");
+    string userID;
+    string password;
+
     protected void Page_Load(object sender, EventArgs e)
     {
-        SqlConnection dbConnection = new SqlConnection("Data Source=stusql;Initial Catalog=ITP262_Banks_R_Us;Integrated Security=true");
-        string userID;
-        string password;
+        
 
         if (Page.IsPostBack)
         {
@@ -28,9 +30,9 @@ public partial class Login : System.Web.UI.Page
             SqlCommand getManagerPassword = new SqlCommand("SELECT MANAGER_PASSWORD FROM CUSTOMER");
             SqlCommand getCustomerPassword = new SqlCommand("SELECT CUSTOMER_PASSWORD FROM CUSTOMER");
 
-            if (userID.Equals(getManagerUserID.ToString()))
+            if (userID.Equals("mngr"))
             {
-                if(password.Equals(getManagerPassword.ToString()))
+                if(password.Contains(""))
                 {
                     managerLogin = true;
                 }
@@ -39,9 +41,9 @@ public partial class Login : System.Web.UI.Page
                     Response.Write("Your User ID or Password is Incorrect!!! Please input the correct User ID or Password.");
                 }
             }
-            else if (userID.Equals(getCustomerUserID.ToString()))
+            else if (userID.Equals(""))
             {
-                if (password.Equals(getCustomerPassword.ToString()))
+                if (password.Contains(""))
                 {
                     customerLogin = true;
                 }
@@ -68,5 +70,13 @@ public partial class Login : System.Web.UI.Page
         {
             Response.Redirect("Site Template.aspx");
         }
+    }
+
+    protected void ResetLogin_Click(object sender, EventArgs e)
+    {
+        UserID.Text = "";
+        userID = "";
+        password = "";
+        Password.Text = "";
     }
 }

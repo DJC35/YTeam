@@ -44,19 +44,19 @@
                 <td class="auto-style3">
                     <asp:DropDownList ID="AccountDDL" runat="server" Width="200px" OnSelectedIndexChanged="AccountDDL_SelectedIndexChanged">
                     <asp:ListItem Text="Account Management" Value="0"></asp:ListItem>
-                    <asp:ListItem Text="New Account" Value="New Account.aspx"></asp:ListItem>
-                    <asp:ListItem Text="Edit Account" Value="Edit Account.aspx"></asp:ListItem>
-                    <asp:ListItem Text="Delete Account" Value="Delete Account.aspx"></asp:ListItem>
+                    <asp:ListItem Text="New Account" Value="NewAccount.aspx"></asp:ListItem>
+                    <asp:ListItem Text="Edit Account" Value="EditAccount.aspx"></asp:ListItem>
+                    <asp:ListItem Text="Delete Account" Value="DeleteAccount.aspx"></asp:ListItem>
                     <asp:ListItem Text="Deposit" Value="Deposit.aspx"></asp:ListItem>
                     <asp:ListItem Text="Withdraw" Value="Withdraw.aspx"></asp:ListItem>
-                    <asp:ListItem Text="Fund Transfer" Value="Fund Transfer.aspx"></asp:ListItem>
+                    <asp:ListItem Text="Fund Transfer" Value="FundTransfer.aspx"></asp:ListItem>
                     </asp:DropDownList>
                 </td>
                 <td class="auto-style4">
                     <asp:DropDownList ID="StatementDDL" runat="server" Width="200px" OnSelectedIndexChanged="StatementDDL_SelectedIndexChanged">
                     <asp:ListItem Text="Statements" Value="0"></asp:ListItem>
-                    <asp:ListItem Text="Balance Enquiry" Value="Balance Enquiry.aspx"></asp:ListItem>
-                    <asp:ListItem Text="Mini Statement" Value="Mini Statement.aspx"></asp:ListItem>
+                    <asp:ListItem Text="Balance Enquiry" Value="BalanceEnquiry.aspx"></asp:ListItem>
+                    <asp:ListItem Text="Mini Statement" Value="MiniStatement.aspx"></asp:ListItem>
                     <asp:ListItem Text="Customized Statement" Value="Customized Statement.aspx"></asp:ListItem>
                     </asp:DropDownList>
                 </td>

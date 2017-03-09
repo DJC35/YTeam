@@ -1,9 +1,9 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Site Template.aspx.cs" Inherits="Site_Template" %>
+﻿<%@ Page Language="C#" CodeFile="FundTransfer.aspx.cs" Inherits="FundTransfer"%>
 
 <!DOCTYPE html>
-
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
+<meta charset="utf-8" />
     <title>Banks'R'Us</title>    
 <style type="text/css">
         .auto-style1 {
@@ -68,11 +68,40 @@
                     <!--Output Area-->
                 </td>
                 <td>
-                    <h3><!--Name of Page--></h3>
+                    <h3>Fund Transfer</h3>
                     <table>
                         <tr>
                             <td>
-                                <!--Inputs-->
+                                Payer's Account Number
+                            </td>
+                            <td>
+                                <asp:Textbox id="PayersAccountNumber" runat="server" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Payee's Account Number
+                            </td>
+                            <td>
+                                <asp:Textbox id="PayeesAccountNumber" runat="server" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Amount
+                            </td>
+                            <td>
+                                <asp:Textbox id="Amount" runat="server" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <asp:Button id="Submit"  Text="Submit" onclick="Submit_Click" runat="server" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <asp:Button id="Reset"  Text="Reset" onclick="Reset_Click" runat="server" />
                             </td>
                         </tr>
                     </table>

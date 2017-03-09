@@ -1,9 +1,9 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Site Template.aspx.cs" Inherits="Site_Template" %>
+﻿<%@ Page Language="C#" CodeFile="Deposit.aspx.cs" Inherits="Deposit"%>
 
 <!DOCTYPE html>
-
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
+<meta charset="utf-8" />
     <title>Banks'R'Us</title>    
 <style type="text/css">
         .auto-style1 {
@@ -65,14 +65,35 @@
             </tr>
             <tr>
                 <td>
-                    <!--Output Area-->
+                    <asp:Label ID="Error" runat="server" Text=" "></asp:Label>
                 </td>
                 <td>
-                    <h3><!--Name of Page--></h3>
+                    <h3>Deposit</h3>
                     <table>
                         <tr>
                             <td>
-                                <!--Inputs-->
+                                Account Number
+                            </td>
+                            <td>
+                                <asp:Textbox id="AccountNumber" runat="server" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Amount
+                            </td>
+                            <td>
+                                <asp:Textbox id="Amount" runat="server" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <asp:button id="Submit" Text="Submit" runat="server"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <asp:button id="Reset" Text="Reset" runat="server"/>
                             </td>
                         </tr>
                     </table>

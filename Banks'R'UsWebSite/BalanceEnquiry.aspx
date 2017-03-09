@@ -1,9 +1,9 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Site Template.aspx.cs" Inherits="Site_Template" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="BalanceEnquiry.aspx.cs" Inherits="BalanceEnquiry" %>
 
 <!DOCTYPE html>
-
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
+<meta charset="utf-8" />
     <title>Banks'R'Us</title>    
 <style type="text/css">
         .auto-style1 {
@@ -68,11 +68,24 @@
                     <!--Output Area-->
                 </td>
                 <td>
-                    <h3><!--Name of Page--></h3>
+                    <h3>Balance Enquiry</h3>
                     <table>
                         <tr>
                             <td>
-                                <!--Inputs-->
+                                Account Number
+                            </td>
+                            <td>
+                                <input id="AccountNumber" type="text" />
+                            </td>
+                        </tr>                          
+                        <tr>
+                            <td>
+                                <input id="Submit" type="button" value="Submit" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input id="Reset" type="button" value="Reset" />
                             </td>
                         </tr>
                     </table>

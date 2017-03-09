@@ -1,9 +1,9 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Site Template.aspx.cs" Inherits="Site_Template" %>
+﻿<%@ Page Language="C#" CodeFile="EditAccount.aspx.cs" Inherits="EditAccount"%>
 
 <!DOCTYPE html>
-
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
+<meta charset="utf-8" />
     <title>Banks'R'Us</title>    
 <style type="text/css">
         .auto-style1 {
@@ -68,11 +68,43 @@
                     <!--Output Area-->
                 </td>
                 <td>
-                    <h3><!--Name of Page--></h3>
+                    <h3>Edit Account</h3>
                     <table>
                         <tr>
                             <td>
-                                <!--Inputs-->
+                                Account Number
+                            </td>
+                            <td>
+                                <asp:Textbox id="AccountNumber" runat="server" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Customer ID
+                            </td>
+                            <td>
+                                <asp:Textbox id="CustomerID" runat="server" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Account Type
+                            </td>
+                            <td>
+                                <asp:DropDownList ID="AccountType" runat="server">
+                                <asp:ListItem Value="Savings">Savings</asp:ListItem>
+                                <asp:ListItem Value="Checking">Checking</asp:ListItem>
+                                </asp:DropDownList>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <asp:Button id="Submit"  Text="Submit" onclick="Submit_Click" runat="server" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <asp:Button id="Reset"  Text="Reset" onclick="Reset_Click" runat="server" />
                             </td>
                         </tr>
                     </table>
