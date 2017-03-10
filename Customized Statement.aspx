@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" %>
+﻿<%@ Page Language="C#" CodeFile="Customized Statement.aspx.cs" Inherits="CustomizedStatement"%>
 
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
@@ -24,6 +24,9 @@
         .auto-style6 {
             height: 77px;
         }
+    .auto-style7 {
+        height: 26px;
+    }
     </style>
 </head>
 <body>
@@ -35,28 +38,28 @@
                 <td class="auto-style2">
                     <asp:DropDownList ID="CustomerDDL" runat="server" Width="200px" OnSelectedIndexChanged="CustomerDDL_SelectedIndexChanged">
                     <asp:ListItem Text="Customer Management" Value="0"></asp:ListItem>
-                    <asp:ListItem Text="New Customer" Value="1"></asp:ListItem>
-                    <asp:ListItem Text="Edit Customer" Value="2"></asp:ListItem>
-                    <asp:ListItem Text="Delete Customer" Value="3"></asp:ListItem>
+                    <asp:ListItem Text="New Customer" Value="NewCustomer.aspx"></asp:ListItem>
+                    <asp:ListItem Text="Edit Customer" Value="EditCustomer.aspx"></asp:ListItem>
+                    <asp:ListItem Text="Delete Customer" Value="DeleteCustomer.aspx"></asp:ListItem>
                     </asp:DropDownList>
                 </td>
                 <td class="auto-style3">
                     <asp:DropDownList ID="AccountDDL" runat="server" Width="200px" OnSelectedIndexChanged="AccountDDL_SelectedIndexChanged">
                     <asp:ListItem Text="Account Management" Value="0"></asp:ListItem>
-                    <asp:ListItem Text="New Account" Value="1"></asp:ListItem>
-                    <asp:ListItem Text="Edit Account" Value="2"></asp:ListItem>
-                    <asp:ListItem Text="Delete Account" Value="3"></asp:ListItem>
-                    <asp:ListItem Text="Deposit" Value="4"></asp:ListItem>
-                    <asp:ListItem Text="Withdraw" Value="5"></asp:ListItem>
-                    <asp:ListItem Text="Fund Transfer" Value="6"></asp:ListItem>
+                    <asp:ListItem Text="New Account" Value="NewAccount.aspx"></asp:ListItem>
+                    <asp:ListItem Text="Edit Account" Value="EditAccount.aspx"></asp:ListItem>
+                    <asp:ListItem Text="Delete Account" Value="DeleteAccount.aspx"></asp:ListItem>
+                    <asp:ListItem Text="Deposit" Value="Deposit.aspx"></asp:ListItem>
+                    <asp:ListItem Text="Withdraw" Value="Withdraw.aspx"></asp:ListItem>
+                    <asp:ListItem Text="Fund Transfer" Value="FundTransfer.aspx"></asp:ListItem>
                     </asp:DropDownList>
                 </td>
                 <td class="auto-style4">
                     <asp:DropDownList ID="StatmentDDL" runat="server" Width="200px" OnSelectedIndexChanged="StatmentDDL_SelectedIndexChanged">
                     <asp:ListItem Text="Statments" Value="0"></asp:ListItem>
-                    <asp:ListItem Text="Balance Enquiry" Value="1"></asp:ListItem>
-                    <asp:ListItem Text="Mini Statement" Value="2"></asp:ListItem>
-                    <asp:ListItem Text="Customized Statement" Value="3"></asp:ListItem>
+                    <asp:ListItem Text="Balance Enquiry" Value="BalanceEnquiry.aspx"></asp:ListItem>
+                    <asp:ListItem Text="Mini Statement" Value="MiniStatement.aspx"></asp:ListItem>
+                    <asp:ListItem Text="Customized Statement" Value="CustomizedStatement.aspx"></asp:ListItem>
                     </asp:DropDownList>
                 </td>
             </tr>  
@@ -72,7 +75,7 @@
                                 Account Number
                             </td>
                             <td>
-                                <input id="AccountNumber" type="text" />
+                                <asp:Textbox id="AccountNumber" runat="server" />
                                 
                             </td>
                         </tr>
@@ -81,7 +84,7 @@
                                 From
                             </td>
                             <td>
-                                <input id="From" type="text" /><input id="calanderRevel" type="button" value="Revel" />
+                                <asp:Textbox id="From" runat="server" /><asp:Button id="RevealFrom"  Text="Reveal"  runat="server" />
                                 <asp:Calendar ID="CalendarFrom" runat="server" Visible="False"></asp:Calendar>
                             </td>
                         </tr>
@@ -90,7 +93,7 @@
                                 To
                             </td>
                             <td>
-                                <input id="To" type="text" /><input id="calanderReveal" type="button" value="Reveal" />
+                                <asp:Textbox id="To" runat="server" /><asp:Button id="RevealTo"  Text="Reveal"  runat="server" />
                                 <asp:Calendar ID="CalendarTo" runat="server" Visible="False"></asp:Calendar>
                             </td>
                         </tr>
@@ -99,25 +102,25 @@
                                 Minimum Transaction Value
                             </td>
                             <td>
-                                <input id="MinimumTransactionValue" type="text" /> 
+                                <asp:Textbox id="MinimumTransactionValue" runat="server" />
                             </td>
                         </tr>
                         <tr>
-                            <td>
+                            <td class="auto-style7">
                                 Number Of Transactions
                             </td>
-                            <td>
-                                <input id="NumberOfTransactions" type="text" />
+                            <td class="auto-style7">
+                                <asp:Textbox id="NumberOfTransactions" runat="server" />
                             </td>
                         </tr>                                                
                         <tr>
                             <td>
-                                <input id="Submit" type="button" value="Submit" />
+                                <asp:Button id="Submit"  Text="Submit" onclick="Submit_Click" runat="server" />
                             </td>
                         </tr>
                         <tr>
                             <td>
-                                <input id="Reset" type="button" value="Reset" />
+                                <asp:Button id="Reset"  Text="Reset" onclick="Reset_Click" runat="server" />
                             </td>
                         </tr>
                     </table>
