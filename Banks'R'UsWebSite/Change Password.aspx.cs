@@ -11,26 +11,24 @@ public partial class Change_Password : System.Web.UI.Page
     SqlConnection dbConnection = new SqlConnection("Data Source=stusql;Initial Catalog=ITP262_Banks_R_Us;Integrated Security=true");
     bool isCustomer = false;
 
-    string idNumber;
-    string cusID;
-    string managerID;
+    string userID;
+    string userIDPrefix;
     string newPassword;
+    string password;
 
-    string readCustomerIDString;
-    string readManagerIDString;
+    string getID;
     string changeManagerPasswordString;
     string changeCustomerPasswordString;
-
     SqlCommand changePassword;
 
-    int[] customerIDs;
-    int[] managerIDs;
+    object[] dbID;
+    object[] dbPass;
 
     protected void Page_Load(object sender, EventArgs e)
     {
 
     }
-
+    
     protected void CustomerDDL_SelectedIndexChanged(object sender, EventArgs e)
     {
         Response.Redirect(CustomerDDL.SelectedValue);
@@ -48,110 +46,133 @@ public partial class Change_Password : System.Web.UI.Page
 
     protected void ChangePasswords_Click(object sender, EventArgs e)
     {
-        
-
-        idNumber = UserID.Text;
+        SqlConnection dbConnection = new SqlConnection("Data Source=stusql;Initial Catalog=ITP262_Banks_R_Us;Integrated Security=true");
+        userID = UserID.Text;
+        userIDPrefix = UserIDPrefix.Text;
+        password = OldPassword.Text;
         newPassword = NewPassword.Text;
-
-        readCustomerIDString = "SELECT CUSTOMER_ID FROM CUSTOMER;";
-        readManagerIDString = "SELECT MANAGER_ID FROM MANAGER;";
-        changeManagerPasswordString = "UPDATE MANAGER SET MANAGER_PASSWORD = '" + newPassword + "' WHERE MANAGER_ID = " + managerID + ";";
-        changeCustomerPasswordString = "UPDATE CUSTOMER SET CUSTOMER_PASSWORD = '" + newPassword + "' WHERE CUSTOMER_ID = " + cusID + ";";
 
         try
         {
-            SqlCommand readCustomerID = new SqlCommand(readCustomerIDString, dbConnection);
-            SqlCommand readManagerID = new SqlCommand(readManagerIDString, dbConnection);
             dbConnection.Open();
+            SqlCommand getManagerUserID = new SqlCommand("SELECT MANAGER_ID FROM MANAGER WHERE MANAGER_ID = " + userID + ";", dbConnection);
+            SqlCommand getCustomerUserID = new SqlCommand("SELECT CUSTOMER_ID FROM CUSTOMER WHERE CUSTOMER_ID = " + userID + ";", dbConnection);
+            SqlCommand getNumIDs;
+            SqlCommand changePassword;
+            SqlCommand getPassword;
+            SqlDataReader getID;
+            SqlDataReader getPass;
 
-            SqlDataReader readCustomerTable = readCustomerID.ExecuteReader();
-
-            int count = 0;
-
-            while (readCustomerTable.Read())
+            if (userIDPrefix.Contains("mngr"))
             {
-                ++count;
+                getNumIDs = new SqlCommand("SELECT COUNT(*) FROM MANAGER;", dbConnection);
             }
-            customerIDs = new int[count];
-
-            count = 0;
-
-            while (readCustomerTable.Read())
+            else
             {
-                customerIDs[count] = readCustomerTable.GetInt32(count);
-                ++count;
+                getNumIDs = new SqlCommand("SELECT COUNT(*) FROM CUSTOMER;", dbConnection);
             }
 
-            count = 0;
+            int numRows = (int)getNumIDs.ExecuteScalar();
 
-            readCustomerTable.Close();
-
-            SqlDataReader readManagerTable = readManagerID.ExecuteReader();
-
-            while (readManagerTable.Read())
+            if (userIDPrefix.Contains("mngr"))
             {
-                count++;
+                getID = getManagerUserID.ExecuteReader();
             }
-            managerIDs = new int[count];
-
-            count = 0;
-
-            while (readManagerTable.Read())
+            else
             {
-                managerIDs[count] = readManagerTable.GetInt32(count);
-                count++;
+                getID = getCustomerUserID.ExecuteReader();
             }
-            
-            readManagerTable.Close();
 
-            count = 0;
+            dbID = new object[numRows];
+            dbPass = new object[numRows];
 
-            for (int i = 0; i <= customerIDs.Length; i++)
+            while (getID.Read())
             {
-                if (idNumber.Equals(customerIDs[i]))
+                getID.GetValues(dbID);
+            }
+            getID.Close();
+            for (int i = 0; i <= numRows; ++i)
+            {
+
+                //dbID[i] = getID.GetInt32(i);
+                if ((userIDPrefix.Contains("mngr")) && (userID.Equals(dbID[i].ToString())))
                 {
-                    isCustomer = true;
-                    cusID = ""+customerIDs[i];
-                    break;
+                    changePassword = new SqlCommand("UPDATE MANAGER SET MANAGER_PASSWORD = '" + newPassword + 
+                        "' WHERE MANAGER_ID = " + dbID[i] + ";", dbConnection);
+
+                    getPassword = new SqlCommand("SELECT MANAGER_PASSWORD FROM MANAGER WHERE MANAGER_ID = " + dbID[i] + ";", dbConnection);
+                    getPass = getPassword.ExecuteReader();
+                    while (getPass.Read())
+                    {
+                        getPass.GetValues(dbPass);
+                    }
+                    getPass.Close();
+
+                    if (password.Contains(dbPass[i].ToString()) && ConfirmNewPassword.Text.Equals(newPassword))
+                    {
+                        changePassword.ExecuteNonQuery();
+                        Response.Redirect("Login.aspx");
+                    }
+                    else
+                    {
+                        Response.Write("Your User ID or Password is Incorrect!!! Please input the correct User ID or Password.");
+                    }
                 }
-            }
-            for (int i = 0; i <= managerIDs.Length; i++)
-            { 
-                if (idNumber.Equals("mngr" + managerIDs[i]))
+                else if (userID.Equals(dbID[i].ToString()))
                 {
-                    isCustomer = false;
-                    managerID = ""+managerIDs[i];
-                    break;
-                }
-            }
+                    changePassword = new SqlCommand("UPDATE CUSTOMER SET CUSTOMER_PASSWORD = '" + newPassword +
+                        "' WHERE CUSTOMER_ID = " + dbID[i] + ";", dbConnection);
 
-            if (ConfirmNewPassword.Text.Equals(NewPassword.Text))
-            {
-                if (isCustomer)
-                {
-                    cusID = idNumber;
-                    changePassword = new SqlCommand(changeCustomerPasswordString, dbConnection);
+                    getPassword = new SqlCommand("SELECT CUSTOMER_PASSWORD FROM CUSTOMER WHERE CUSTOMER_ID = " + dbID[i] + ";", dbConnection);
+                    getPass = getPassword.ExecuteReader();
+                    while (getPass.Read())
+                    {
+                        getPass.GetValues(dbPass);
+                    }
+                    getPass.Close();
+
+                    if (password.Contains(dbPass[i].ToString()) && ConfirmNewPassword.Text.Equals(newPassword))
+                    {
+                        changePassword.ExecuteNonQuery();
+                        Response.Redirect("Login.aspx");
+                    }
+                    else
+                    {
+                        Response.Write("Your User ID or Password is Incorrect!!! Please input the correct User ID or Password.");
+                    }
                 }
                 else
                 {
-                    managerID = idNumber;
-                    changePassword = new SqlCommand(changeManagerPasswordString, dbConnection);
+                    Response.Write("Your User ID or Password is Incorrect!!! Please input the correct User ID or Password.");
                 }
             }
-            changePassword.ExecuteNonQuery();
 
             dbConnection.Close();
-
         }
-        catch(SqlException sqle)
+        catch (SqlException sqle)
         {
-            Response.Write(sqle.Message);
+            Response.Write(" Exception: " + sqle.Message);
         }
+        catch (IndexOutOfRangeException ioore)
+        {
+            Response.Write(" Exception: " + ioore.Message);
+        }
+        catch (NullReferenceException nre)
+        {
+            Response.Write(" Exception: " + nre.Message);
+        }
+        catch (InvalidOperationException ioe)
+        {
+            Response.Write(" Exception: " + ioe.Message);
+        }
+
+
     }
 
     protected void ResetForm_Click(object sender, EventArgs e)
     {
         UserID.Text = "";
+        OldPassword.Text = "";
         NewPassword.Text = "";
         ConfirmNewPassword.Text = "";
     }
