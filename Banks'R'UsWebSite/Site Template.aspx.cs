@@ -31,4 +31,9 @@ public partial class Site_Template : System.Web.UI.Page
     {
         Response.Redirect(StatementDDL.SelectedValue);
     }
+
+    protected void LogoutButton_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("Login.aspx");
+    }
 }

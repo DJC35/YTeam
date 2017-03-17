@@ -176,4 +176,9 @@ public partial class Change_Password : System.Web.UI.Page
         NewPassword.Text = "";
         ConfirmNewPassword.Text = "";
     }
+
+    protected void LogoutButton_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("Login.aspx");
+    }
 }
