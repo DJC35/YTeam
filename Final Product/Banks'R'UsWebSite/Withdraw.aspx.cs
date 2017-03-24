@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -10,9 +10,10 @@ public partial class Withdraw : Page
 {
     SqlConnection dbConnection = new SqlConnection("Data Source=stusql;Initial Catalog=ITP262_Banks_R_Us;Integrated Security=true");
     int accountNum;
-    int amount;
-    int bankAmount;
+    double amount;
+    double bankAmount;
     int transactionNum;
+    DateTime date = DateTime.Now;
     Random rand = new Random();
 
     protected void Page_Load(object sender, EventArgs e)
@@ -44,10 +45,10 @@ public partial class Withdraw : Page
     protected void Submit_Click(object sender, EventArgs e)
     {
         accountNum = int.Parse(AccountNumber.Text);
-        amount = int.Parse(Amount.Text);
+        amount = double.Parse(Amount.Text);
         transactionNum = rand.Next(1, 99999);
 
-        SqlCommand select = new SqlCommand("SELECT ACCOUNT_BALANCE FROM ACCOUNT WHERE ACCOUNT_ID = " + accountNum);
+        SqlCommand select = new SqlCommand("SELECT ACCOUNT_BALANCE FROM ACCOUNT WHERE ACCOUNT_ID = " + accountNum +";", dbConnection); 
         try
         {
             dbConnection.Open();
@@ -56,20 +57,23 @@ public partial class Withdraw : Page
             if(reader.HasRows)
             {
                 reader.Read();
-                bankAmount = reader.GetInt32(0);
+                bankAmount = Convert.ToDouble(reader["ACCOUNT_BALANCE"]);
+            }
+            reader.Close();
 
-                if(amount > bankAmount)
-                {
-                    ErrorMessage.Text = "You are trying to withdraw more money than what is in your account";
-                }
-                else
-                {
-                    bankAmount -= amount;
-                    SqlCommand update = new SqlCommand("UPDATE ACCOUNT SET ACCOUNT_BALANCE=" + bankAmount + " WHERE ACCOUNT_ID =" + accountNum);
-                    SqlCommand filling = new SqlCommand("INSERT INTO BANK_TRANSACTION VALUES (" + transactionNum + ", " + "CURDATE(), " + amount + ", " + "Withdraw, " + accountNum + ");", dbConnection);
+            if (amount > bankAmount)
+            {
+                ErrorMessage.Text = "You are trying to withdraw more money than what is in your account";
+            }
+            else
+            {
+                bankAmount -= amount;
+                SqlCommand update = new SqlCommand("UPDATE ACCOUNT SET ACCOUNT_BALANCE=" + bankAmount + " WHERE ACCOUNT_ID =" + accountNum + ";", dbConnection);
+                SqlCommand filling = new SqlCommand("INSERT INTO BANK_TRANSACTION VALUES(" + "'" + transactionNum + "'" + ", " + "'" + date + "'" + ", " + "'" + amount + "'" + ", " + "'WITHDRAW', " + "'" + accountNum + "'" + ");", dbConnection);
 
-                    update.ExecuteNonQuery();
-                }
+                update.ExecuteNonQuery();
+                filling.ExecuteNonQuery();
+                ErrorMessage.Text = "";
             }
             dbConnection.Close();
         }
@@ -77,10 +81,5 @@ public partial class Withdraw : Page
         {
             Response.Write(sqle.Message);
         }
-    }
-
-    protected void LogoutButton_Click(object sender, EventArgs e)
-    {
-        Response.Redirect("Login.aspx");
     }
 }
