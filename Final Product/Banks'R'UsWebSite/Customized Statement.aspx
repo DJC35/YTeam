@@ -63,7 +63,7 @@
                 <td>
                     <asp:Button ID="GoToPage" Text="Go" runat="server" />
                 </td>
-            </tr>
+            </tr>  
             <tr>
                 <td>
                     <!--Output Area-->
@@ -76,7 +76,7 @@
                                 Account Number
                             </td>
                             <td>
-                                <input id="AccountNumber" type="text" />
+                                <asp:Textbox id="AccountNumber" runat="server" />
                                 
                             </td>
                         </tr>
@@ -85,8 +85,8 @@
                                 From
                             </td>
                             <td>
-                                <input id="From" type="text" /><input id="calanderRevel" type="button" value="Revel" />
-                                <asp:Calendar ID="CalendarFrom" runat="server" Visible="False"></asp:Calendar>
+                                <asp:Textbox id="From" Text="Year-Month-Date" runat="server" /><!--<asp:Button id="RevealFrom"  Text="Reveal"  runat="server" />
+                                <asp:Calendar ID="CalendarFrom" runat="server" Visible="False"></asp:Calendar>-->
                             </td>
                         </tr>
                         <tr>
@@ -94,8 +94,8 @@
                                 To
                             </td>
                             <td>
-                                <input id="To" type="text" /><input id="calanderReveal" type="button" value="Reveal" />
-                                <asp:Calendar ID="CalendarTo" runat="server" Visible="False"></asp:Calendar>
+                                <asp:Textbox id="To" Text="Year-Month-Date" runat="server" /><!--<asp:Button id="RevealTo"  Text="Reveal"  runat="server" />
+                                <asp:Calendar ID="CalendarTo" runat="server" Visible="False"></asp:Calendar>-->
                             </td>
                         </tr>
                         <tr>
@@ -103,25 +103,25 @@
                                 Minimum Transaction Value
                             </td>
                             <td>
-                                <input id="MinimumTransactionValue" type="text" /> 
+                                <asp:Textbox id="MinimumTransactionValue" runat="server" />
                             </td>
                         </tr>
                         <tr>
-                            <td>
+                            <td class="auto-style7">
                                 Number Of Transactions
                             </td>
-                            <td>
-                                <input id="NumberOfTransactions" type="text" />
+                            <td class="auto-style7">
+                                <asp:Textbox id="NumberOfTransactions" runat="server" />
                             </td>
                         </tr>                                                
                         <tr>
                             <td>
-                                <input id="Submit" type="button" value="Submit" />
+                                <asp:Button id="Submit"  Text="Submit" onclick="Submit_Click" runat="server" />
                             </td>
                         </tr>
                         <tr>
                             <td>
-                                <input id="Reset" type="button" value="Reset" />
+                                <asp:Button id="Reset"  Text="Reset" onclick="Reset_Click" runat="server" />
                             </td>
                         </tr>
                     </table>
@@ -129,7 +129,10 @@
             </tr>
             <tr>
                 <td>
-                    <asp:Button ID="Logout" Text="Logout" runat="server"  OnClick="LogoutButton_Click"/>
+                    <asp:Button ID="Logout" Text="Logout" runat="server" />
+                </td>
+                <td>
+                    <asp:Label ID="Output" runat="server" Text=""></asp:Label>
                 </td>
             </tr>
         </table>
