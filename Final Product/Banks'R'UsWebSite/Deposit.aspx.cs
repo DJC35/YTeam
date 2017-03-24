@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -72,9 +72,5 @@ public partial class Deposit : Page
         {
             Response.Write(sqle.Message);
         }
-    }
-    protected void LogoutButton_Click(object sender, EventArgs e)
-    {
-        Response.Redirect("Login.aspx");
     }
 }

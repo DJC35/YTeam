@@ -1,4 +1,4 @@
-<%@ Page Language="C#" CodeFile="Withdraw.aspx.cs" Inherits="Withdraw"%>
+﻿<%@ Page Language="C#" CodeFile="Withdraw.aspx.cs" Inherits="Withdraw"%>
 
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
@@ -41,7 +41,6 @@
                     <asp:ListItem Text="New Customer" Value="New Customer.aspx"></asp:ListItem>
                     <asp:ListItem Text="Edit Customer" Value="Edit Customer.aspx"></asp:ListItem>
                     <asp:ListItem Text="Delete Customer" Value="Delete Customer.aspx"></asp:ListItem>
-                    <asp:ListItem Text="Change Password" Value="Change Password.aspx"></asp:ListItem>
                     </asp:DropDownList>
                 </td>
                 <td class="auto-style3">

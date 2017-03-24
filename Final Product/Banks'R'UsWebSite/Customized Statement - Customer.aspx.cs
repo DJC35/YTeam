@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Data.SqlClient;
 
 public partial class Customized_Statement : System.Web.UI.Page
 {
@@ -24,16 +25,6 @@ public partial class Customized_Statement : System.Web.UI.Page
     protected void CustomerDDL_SelectedIndexChanged(object sender, EventArgs e)
     {
         Response.Redirect(CustomerDDL.SelectedValue);
-    }
-
-    protected void AccountDDL_SelectedIndexChanged(object sender, EventArgs e)
-    {
-        Response.Redirect(AccountDDL.SelectedValue);
-    }
-
-    protected void StatmentDDL_SelectedIndexChanged(object sender, EventArgs e)
-    {
-        Response.Redirect(StatmentDDL.SelectedValue);
     }
 
     protected void Submit_Click(object sender, EventArgs e)
@@ -60,7 +51,7 @@ public partial class Customized_Statement : System.Web.UI.Page
                         output += ("<tr>");
                         output += ("<td>" + rd["Transaction_Num"] + "</td>");
                         output += ("<td>" + rd["Transaction_Date"] + "</td>");
-                        output += ("<td>" + rd["Transaction_Amount"] + "</td>");
+                        output += ("<td>$" + rd["Transaction_Amount"] + "</td>");
                         output += ("<td>" + rd["Transaction_Type"] + "</td>");
                         output += ("<td>" + rd["Account_ID"] + "</td>");
                         output += ("</tr>");

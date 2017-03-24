@@ -96,7 +96,7 @@ public partial class Login : System.Web.UI.Page
                     getPass.Close();
                     if (password.Contains(dbPass[i].ToString()))
                     {
-                        Response.Redirect("Customized Statement.aspx");
+                        Response.Redirect("MiniStatement - Customer.aspx");
                     }
                     else
                     {

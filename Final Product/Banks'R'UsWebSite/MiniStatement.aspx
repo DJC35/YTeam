@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="MiniStatement.aspx.cs" Inherits="MiniStatement" %>
+﻿<%@ Page Language="C#" CodeFile="MiniStatement.aspx.cs" Inherits="MiniStatement"%>
 
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
@@ -35,10 +35,9 @@
                 <td class="auto-style2">
                     <asp:DropDownList ID="CustomerDDL" runat="server" Width="200px" OnSelectedIndexChanged="CustomerDDL_SelectedIndexChanged">
                     <asp:ListItem Text="Customer Management" Value="0"></asp:ListItem>
-                    <asp:ListItem Text="New Customer" Value="New Customer.aspx"></asp:ListItem>
-                    <asp:ListItem Text="Edit Customer" Value="Edit Customer.aspx"></asp:ListItem>
-                    <asp:ListItem Text="Delete Customer" Value="Delete Customer.aspx"></asp:ListItem>
-                    <asp:ListItem Text="Change Password" Value="Change Password.aspx"></asp:ListItem>
+                    <asp:ListItem Text="New Customer" Value="NewCustomer.aspx"></asp:ListItem>
+                    <asp:ListItem Text="Edit Customer" Value="EditCustomer.aspx"></asp:ListItem>
+                    <asp:ListItem Text="Delete Customer" Value="DeleteCustomer.aspx"></asp:ListItem>
                     </asp:DropDownList>
                 </td>
                 <td class="auto-style3">
@@ -53,7 +52,7 @@
                     </asp:DropDownList>
                 </td>
                 <td class="auto-style4">
-                    <asp:DropDownList ID="StatementDDL" runat="server" Width="200px" OnSelectedIndexChanged="StatementDDL_SelectedIndexChanged">
+                    <asp:DropDownList ID="StatmentDDL" runat="server" Width="200px" OnSelectedIndexChanged="StatmentDDL_SelectedIndexChanged">
                     <asp:ListItem Text="Statements" Value="0"></asp:ListItem>
                     <asp:ListItem Text="Balance Enquiry" Value="BalanceEnquiry.aspx"></asp:ListItem>
                     <asp:ListItem Text="Mini Statement" Value="MiniStatement.aspx"></asp:ListItem>
@@ -63,7 +62,7 @@
                 <td>
                     <asp:Button ID="GoToPage" Text="Go" runat="server" />
                 </td>
-            </tr>
+            </tr>  
             <tr>
                 <td></td>
                 <td>

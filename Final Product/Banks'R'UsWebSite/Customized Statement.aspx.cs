@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -62,7 +62,7 @@ public partial class CustomizedStatement : Page
                         output += ("<tr>");
                         output += ("<td>" + rd["Transaction_Num"] + "</td>");
                         output += ("<td>" + rd["Transaction_Date"] + "</td>");
-                        output += ("<td>" + rd["Transaction_Amount"] + "</td>");
+                        output += ("<td>$" + rd["Transaction_Amount"] + "</td>");
                         output += ("<td>" + rd["Transaction_Type"] + "</td>");
                         output += ("<td>" + rd["Account_ID"] + "</td>");
                         output += ("</tr>");
@@ -90,9 +90,5 @@ public partial class CustomizedStatement : Page
         AccountNumber.Text = "";
         Output.Text = "";
         output = "";
-    }
-    protected void LogoutButton_Click(object sender, EventArgs e)
-    {
-        Response.Redirect("Login.aspx");
     }
 }
