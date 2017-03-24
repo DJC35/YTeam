@@ -82,4 +82,8 @@ public partial class Withdraw : Page
             Response.Write(sqle.Message);
         }
     }
+    protected void LogoutButton_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("Login.aspx");
+    }
 }
