@@ -110,7 +110,7 @@
             </tr>
             <tr>
                 <td>
-                    <asp:Button ID="Logout" Text="Logout" runat="server"  OnClick="LogoutButton_Click"/>
+                    <asp:Button ID="Logout" Text="Logout" runat="server" />
                 </td>
             </tr>
         </table>
