@@ -62,6 +62,9 @@
                     <asp:ListItem Text="Customized Statement" Value="CustomizedStatement.aspx"></asp:ListItem>
                     </asp:DropDownList>
                 </td>
+                <td>
+                    <asp:Button ID="GoToPage" Text="Go" runat="server" />
+                </td>
             </tr>  
             <tr>
                 <td>
@@ -84,8 +87,8 @@
                                 From
                             </td>
                             <td>
-                                <asp:Textbox id="From" runat="server" /><asp:Button id="RevealFrom"  Text="Reveal"  runat="server" />
-                                <asp:Calendar ID="CalendarFrom" runat="server" Visible="False"></asp:Calendar>
+                                <asp:Textbox id="From" Text="Year-Month-Date" runat="server" /><!--<asp:Button id="RevealFrom"  Text="Reveal"  runat="server" />
+                                <asp:Calendar ID="CalendarFrom" runat="server" Visible="False"></asp:Calendar>-->
                             </td>
                         </tr>
                         <tr>
@@ -93,8 +96,8 @@
                                 To
                             </td>
                             <td>
-                                <asp:Textbox id="To" runat="server" /><asp:Button id="RevealTo"  Text="Reveal"  runat="server" />
-                                <asp:Calendar ID="CalendarTo" runat="server" Visible="False"></asp:Calendar>
+                                <asp:Textbox id="To" Text="Year-Month-Date" runat="server" /><!--<asp:Button id="RevealTo"  Text="Reveal"  runat="server" />
+                                <asp:Calendar ID="CalendarTo" runat="server" Visible="False"></asp:Calendar>-->
                             </td>
                         </tr>
                         <tr>
@@ -129,6 +132,9 @@
             <tr>
                 <td>
                     <asp:Button ID="Logout" Text="Logout" runat="server" />
+                </td>
+                <td>
+                    <asp:Label ID="Output" runat="server" Text=""></asp:Label>
                 </td>
             </tr>
         </table>

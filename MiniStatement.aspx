@@ -59,11 +59,12 @@
                     <asp:ListItem Text="Customized Statement" Value="CustomizedStatement.aspx"></asp:ListItem>
                     </asp:DropDownList>
                 </td>
+                <td>
+                    <asp:Button ID="GoToPage" Text="Go" runat="server" />
+                </td>
             </tr>  
             <tr>
-                <td>
-                    <asp:Label ID="Output" runat="server" Text=""></asp:Label>
-                </td>
+                <td></td>
                 <td>
                     <h3>Mini Statment</h3>
                     <table>
@@ -92,7 +93,10 @@
                 <td>
                     <asp:Button ID="Logout" Text="Logout" runat="server" />
                 </td>
-            </tr>
+                <td>
+                    <asp:Label ID="Output" runat="server" Text=""></asp:Label>
+                </td>
+            </tr>    
         </table>
         </div>
         </form>

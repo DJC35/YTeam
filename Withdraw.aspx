@@ -24,6 +24,9 @@
         .auto-style6 {
             height: 77px;
         }
+    .auto-style7 {
+        width: 285px;
+    }
     </style>
 </head>
 <body>
@@ -35,36 +38,39 @@
                 <td class="auto-style2">
                     <asp:DropDownList ID="CustomerDDL" runat="server" Width="200px" OnSelectedIndexChanged="CustomerDDL_SelectedIndexChanged">
                     <asp:ListItem Text="Customer Management" Value="0"></asp:ListItem>
-                    <asp:ListItem Text="New Customer" Value="1"></asp:ListItem>
-                    <asp:ListItem Text="Edit Customer" Value="2"></asp:ListItem>
-                    <asp:ListItem Text="Delete Customer" Value="3"></asp:ListItem>
+                    <asp:ListItem Text="New Customer" Value="New Customer.aspx"></asp:ListItem>
+                    <asp:ListItem Text="Edit Customer" Value="Edit Customer.aspx"></asp:ListItem>
+                    <asp:ListItem Text="Delete Customer" Value="Delete Customer.aspx"></asp:ListItem>
                     </asp:DropDownList>
                 </td>
                 <td class="auto-style3">
                     <asp:DropDownList ID="AccountDDL" runat="server" Width="200px" OnSelectedIndexChanged="AccountDDL_SelectedIndexChanged">
                     <asp:ListItem Text="Account Management" Value="0"></asp:ListItem>
-                    <asp:ListItem Text="New Account" Value="1"></asp:ListItem>
-                    <asp:ListItem Text="Edit Account" Value="2"></asp:ListItem>
-                    <asp:ListItem Text="Delete Account" Value="3"></asp:ListItem>
-                    <asp:ListItem Text="Deposit" Value="4"></asp:ListItem>
-                    <asp:ListItem Text="Withdraw" Value="5"></asp:ListItem>
-                    <asp:ListItem Text="Fund Transfer" Value="6"></asp:ListItem>
+                    <asp:ListItem Text="New Account" Value="NewAccount.aspx"></asp:ListItem>
+                    <asp:ListItem Text="Edit Account" Value="EditAccount.aspx"></asp:ListItem>
+                    <asp:ListItem Text="Delete Account" Value="DeleteAccount.aspx"></asp:ListItem>
+                    <asp:ListItem Text="Deposit" Value="Deposit.aspx"></asp:ListItem>
+                    <asp:ListItem Text="Withdraw" Value="Withdraw.aspx"></asp:ListItem>
+                    <asp:ListItem Text="Fund Transfer" Value="FundTransfer.aspx"></asp:ListItem>
                     </asp:DropDownList>
                 </td>
                 <td class="auto-style4">
-                    <asp:DropDownList ID="StatmentDDL" runat="server" Width="200px" OnSelectedIndexChanged="StatmentDDL_SelectedIndexChanged">
-                    <asp:ListItem Text="Statments" Value="0"></asp:ListItem>
-                    <asp:ListItem Text="Balance Enquiry" Value="1"></asp:ListItem>
-                    <asp:ListItem Text="Mini Statement" Value="2"></asp:ListItem>
-                    <asp:ListItem Text="Customized Statement" Value="3"></asp:ListItem>
+                    <asp:DropDownList ID="StatementDDL" runat="server" Width="200px" OnSelectedIndexChanged="StatementDDL_SelectedIndexChanged">
+                    <asp:ListItem Text="Statements" Value="0"></asp:ListItem>
+                    <asp:ListItem Text="Balance Enquiry" Value="BalanceEnquiry.aspx"></asp:ListItem>
+                    <asp:ListItem Text="Mini Statement" Value="MiniStatement.aspx"></asp:ListItem>
+                    <asp:ListItem Text="Customized Statement" Value="Customized Statement.aspx"></asp:ListItem>
                     </asp:DropDownList>
                 </td>
-            </tr>  
+                <td>
+                    <asp:Button ID="GoToPage" Text="Go" runat="server" />
+                </td>
+            </tr>
             <tr>
                 <td>
-                    <!--Output Area-->
+                    <asp:Label ID="ErrorMessage" runat="server" Text=" "></asp:Label>
                 </td>
-                <td>
+                <td class="auto-style7">
                     <h3>Withdraw</h3>
                     <table>
                         <tr>
@@ -72,7 +78,7 @@
                                 Account Number
                             </td>
                             <td>
-                                <input id="AccountNumber" type="text" />
+                                <asp:Textbox id="AccountNumber" runat="server" />
                             </td>
                         </tr>
                         <tr>
@@ -80,25 +86,17 @@
                                 Amount
                             </td>
                             <td>
-                                <input id="CustomerID" type="text" />
+                                <asp:Textbox id="Amount" runat="server" />
                             </td>
                         </tr>
                         <tr>
                             <td>
-                                Description
-                            </td>
-                            <td>
-                                <input id="Description" type="text" />
+                                <asp:button id="Submit" Text="Submit" runat="server" OnClick="Submit_Click"/>
                             </td>
                         </tr>
                         <tr>
                             <td>
-                                <input id="Submit" type="button" value="Submit" />
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <input id="Reset" type="button" value="Reset" />
+                                <asp:button id="Reset" Text="Reset" runat="server" OnClick="Reset_Click"/>
                             </td>
                         </tr>
                     </table>
@@ -107,6 +105,9 @@
             <tr>
                 <td>
                     <asp:Button ID="Logout" Text="Logout" runat="server" />
+                </td>
+                <td class="auto-style7">
+                    <asp:Label ID="Error" runat="server" Text=" " />
                 </td>
             </tr>
         </table>

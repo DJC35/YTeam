@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" CodeFile="Deposit.aspx.cs" Inherits="Deposit"%>
+﻿<%@ Page Language="C#" CodeFile="FundTransfer.aspx.cs" Inherits="FundTransfer"%>
 
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
@@ -65,17 +65,25 @@
             </tr>
             <tr>
                 <td>
-                    <asp:Label ID="Error" runat="server" Text=" "></asp:Label>
+                    <!--Output Area-->
                 </td>
                 <td>
-                    <h3>Deposit</h3>
+                    <h3>Fund Transfer</h3>
                     <table>
                         <tr>
                             <td>
-                                Account Number
+                                Payer's Account Number
                             </td>
                             <td>
-                                <asp:Textbox id="AccountNumber" runat="server" />
+                                <asp:Textbox id="PayersAccountNumber" runat="server" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Payee's Account Number
+                            </td>
+                            <td>
+                                <asp:Textbox id="PayeesAccountNumber" runat="server" />
                             </td>
                         </tr>
                         <tr>
@@ -88,12 +96,12 @@
                         </tr>
                         <tr>
                             <td>
-                                <asp:button id="Submit" Text="Submit" onclick="Submit_Click" runat="server"/>
+                                <asp:Button id="Submit"  Text="Submit" onclick="Submit_Click" runat="server" />
                             </td>
                         </tr>
                         <tr>
                             <td>
-                                <asp:button id="Reset" Text="Reset" runat="server"/>
+                                <asp:Button id="Reset"  Text="Reset" onclick="Reset_Click" runat="server" />
                             </td>
                         </tr>
                     </table>
