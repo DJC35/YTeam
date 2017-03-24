@@ -72,4 +72,8 @@ public partial class FundTransfer : System.Web.UI.Page
         PayeesAccountNumber.Text = "";
         Amount.Text = "";
     }
+    protected void LogoutButton_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("Login.aspx");
+    }
 }
