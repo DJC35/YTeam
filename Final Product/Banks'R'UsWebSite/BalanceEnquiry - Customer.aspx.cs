@@ -7,16 +7,7 @@ using System.Web.UI.WebControls;
 
 public partial class BalanceEnquiry : System.Web.UI.Page
 {
-    protected void Page_Load(object sender, EventArgs e)
-    {
-
-    }
-
-    protected void CustomerDDL_SelectedIndexChanged(object sender, EventArgs e)
-    {
-        Response.Redirect(CustomerDDL.SelectedValue);
-    }
-SqlConnection dbConnection = new SqlConnection("Data Source=stusql;Initial Catalog=ITP262_Banks_R_Us ;Integrated Security=true");
+    SqlConnection dbConnection = new SqlConnection("Data Source=stusql;Initial Catalog=ITP262_Banks_R_Us ;Integrated Security=true");
     int accountNumber;
     int accountBalance;
 
