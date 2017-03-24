@@ -82,4 +82,9 @@ public partial class MiniStatement : Page
         Output.Text = "";
         output = "";
     }
+    
+    protected void LogoutButton_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("Login.aspx");
+    }
 }
