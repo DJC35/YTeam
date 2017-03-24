@@ -17,16 +17,6 @@ public partial class Customized_Statement : System.Web.UI.Page
         Response.Redirect(CustomerDDL.SelectedValue);
     }
 
-    protected void AccountDDL_SelectedIndexChanged(object sender, EventArgs e)
-    {
-        Response.Redirect(AccountDDL.SelectedValue);
-    }
-
-    protected void StatementDDL_SelectedIndexChanged(object sender, EventArgs e)
-    {
-        Response.Redirect(StatementDDL.SelectedValue);
-    }
-
     protected void LogoutButton_Click(object sender, EventArgs e)
     {
         Response.Redirect("Login.aspx");

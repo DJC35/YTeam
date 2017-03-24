@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" CodeFile="BalanceEnquiry.aspx.cs" Inherits="BalanceEnquiry"%>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="BalanceEnquiry.aspx.cs" Inherits="BalanceEnquiry" %>
 
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
@@ -35,9 +35,9 @@
                 <td class="auto-style2">
                     <asp:DropDownList ID="CustomerDDL" runat="server" Width="200px" OnSelectedIndexChanged="CustomerDDL_SelectedIndexChanged">
                     <asp:ListItem Text="Customer Management" Value="0"></asp:ListItem>
-                    <asp:ListItem Text="New Customer" Value="NewCustomer.aspx"></asp:ListItem>
-                    <asp:ListItem Text="Edit Customer" Value="EditCustomer.aspx"></asp:ListItem>
-                    <asp:ListItem Text="Delete Customer" Value="DeleteCustomer.aspx"></asp:ListItem>
+                    <asp:ListItem Text="New Customer" Value="New Customer.aspx"></asp:ListItem>
+                    <asp:ListItem Text="Edit Customer" Value="Edit Customer.aspx"></asp:ListItem>
+                    <asp:ListItem Text="Delete Customer" Value="Delete Customer.aspx"></asp:ListItem>
                     </asp:DropDownList>
                 </td>
                 <td class="auto-style3">
@@ -52,38 +52,40 @@
                     </asp:DropDownList>
                 </td>
                 <td class="auto-style4">
-                    <asp:DropDownList ID="StatmentDDL" runat="server" Width="200px" OnSelectedIndexChanged="StatmentDDL_SelectedIndexChanged">
-                    <asp:ListItem Text="Statments" Value="0"></asp:ListItem>
+                    <asp:DropDownList ID="StatementDDL" runat="server" Width="200px" OnSelectedIndexChanged="StatementDDL_SelectedIndexChanged">
+                    <asp:ListItem Text="Statements" Value="0"></asp:ListItem>
                     <asp:ListItem Text="Balance Enquiry" Value="BalanceEnquiry.aspx"></asp:ListItem>
                     <asp:ListItem Text="Mini Statement" Value="MiniStatement.aspx"></asp:ListItem>
-                    <asp:ListItem Text="Customized Statement" Value="CustomizedStatement.aspx"></asp:ListItem>
+                    <asp:ListItem Text="Customized Statement" Value="Customized Statement.aspx"></asp:ListItem>
                     </asp:DropDownList>
                 </td>
-            </tr>  
+                <td>
+                    <asp:Button ID="GoToPage" Text="Go" runat="server" />
+                </td>
+            </tr>
             <tr>
                 <td>
-                  <asp:Label ID="Output" runat="server" Text=""></asp:Label>
+                    <!--Output Area-->
                 </td>
                 <td>
                     <h3>Balance Enquiry</h3>
                     <table>
-                        
                         <tr>
                             <td>
                                 Account Number
                             </td>
                             <td>
-                                <asp:Textbox id="AccountNumber" runat="server" />
+                                <input id="AccountNumber" type="text" />
                             </td>
                         </tr>                          
                         <tr>
                             <td>
-                                <asp:Button id="Submit"  Text="Submit" onclick="Submit_Click" runat="server" />
+                                <input id="Submit" type="button" value="Submit" />
                             </td>
                         </tr>
                         <tr>
                             <td>
-                                <asp:Button id="Reset"  Text="Reset" onclick="Reset_Click" runat="server" />
+                                <input id="Reset" type="button" value="Reset" />
                             </td>
                         </tr>
                     </table>
@@ -91,7 +93,7 @@
             </tr>
             <tr>
                 <td>
-                    <asp:Button ID="Logout" Text="Logout" runat="server" />
+                    <asp:Button ID="Logout" Text="Logout" runat="server"  OnClick="LogoutButton_Click"/>
                 </td>
             </tr>
         </table>

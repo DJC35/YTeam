@@ -63,4 +63,9 @@ public partial class Register_Manager : System.Web.UI.Page
     {
         Response.Redirect("Login.aspx");
     }
+
+    protected void LogoutButton_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("Login.aspx");
+    }
 }

@@ -37,6 +37,7 @@
                     <asp:ListItem Text="New Customer" Value="New Customer.aspx"></asp:ListItem>
                     <asp:ListItem Text="Edit Customer" Value="Edit Customer.aspx"></asp:ListItem>
                     <asp:ListItem Text="Delete Customer" Value="Delete Customer.aspx"></asp:ListItem>
+                    <asp:ListItem Text="Change Password" Value="Change Password.aspx"></asp:ListItem>
                     </asp:DropDownList>
                 </td>
                 <td class="auto-style3">
@@ -94,7 +95,7 @@
             </tr>
             <tr>
                 <td>
-                    <asp:Button ID="Logout" Text="Logout" runat="server" />
+                    <asp:Button ID="Logout" Text="Logout" runat="server"  OnClick="LogoutButton_Click"/>
                 </td>
             </tr>
         </table>

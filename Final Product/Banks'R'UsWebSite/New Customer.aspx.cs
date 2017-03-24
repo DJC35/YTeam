@@ -107,4 +107,8 @@ public partial class New_Customer : System.Web.UI.Page
 	    CusPassword.Text = "";
     }
 
+    protected void LogoutButton_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("Login.aspx");
+    }
 }

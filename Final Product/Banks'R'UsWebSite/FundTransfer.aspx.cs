@@ -12,11 +12,6 @@ public partial class FundTransfer : System.Web.UI.Page
     int payerID;
     int payeeID;
     int amount;
-    int depositNum;
-    int withdrawNum;
-    DateTime date = DateTime.Now;
-    Random rand1 = new Random();
-    Random rand2 = new Random();
 
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -43,21 +38,15 @@ public partial class FundTransfer : System.Web.UI.Page
         payerID = int.Parse(PayersAccountNumber.Text);
         payeeID = int.Parse(PayeesAccountNumber.Text);
         amount = int.Parse(Amount.Text);
-        depositNum = rand1.Next(1, 99999);
-        withdrawNum = rand2.Next(1, 99999);
 
         SqlCommand subtraction = new SqlCommand("UPDATE ACCOUNT SET ACCOUNT_BALANCE = ACCOUNT_BALANCE - " + amount + " WHERE ACCOUNT_ID = " + payerID + "; ", dbConnection);
-        SqlCommand subtractionFilling = new SqlCommand("INSERT INTO BANK_TRANSACTION VALUES(" + "'" + rand1 + "'" + ", " + "'" + date + "'" + ", " + "'" + amount + "'" + ", " + "'FTSENT', " + "'" + withdrawNum + "'" + ");", dbConnection);
-        SqlCommand additionFilling = new SqlCommand("INSERT INTO BANK_TRANSACTION VALUES(" + "'" + rand2 + "'" + ", " + "'" + date + "'" + ", " + "'" + amount + "'" + ", " + "'FTRECIEVE', " + "'" + withdrawNum + "'" + ");", dbConnection);
         SqlCommand addition = new SqlCommand("UPDATE ACCOUNT SET ACCOUNT_BALANCE = ACCOUNT_BALANCE + " + amount + " WHERE ACCOUNT_ID = " + payeeID + "; ", dbConnection);
 
         try
         {
             dbConnection.Open();
             subtraction.ExecuteNonQuery();
-            subtractionFilling.ExecuteNonQuery();
             addition.ExecuteNonQuery();
-            additionFilling.ExecuteNonQuery();
             dbConnection.Close();
         }
         catch (SqlException sqla)
@@ -71,5 +60,10 @@ public partial class FundTransfer : System.Web.UI.Page
         PayersAccountNumber.Text = "";
         PayeesAccountNumber.Text = "";
         Amount.Text = "";
+    }
+
+    protected void LogoutButton_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("Login.aspx");
     }
 }

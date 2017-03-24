@@ -59,4 +59,9 @@ public partial class NewAccount : System.Web.UI.Page
         CustomerID.Text = "";
         IntialDeposit.Text = "";
     }
+
+    protected void LogoutButton_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("Login.aspx");
+    }
 }

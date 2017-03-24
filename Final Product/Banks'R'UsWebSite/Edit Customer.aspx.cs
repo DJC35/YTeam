@@ -88,4 +88,9 @@ public partial class Edit_Customer : System.Web.UI.Page
 	    CusPhoneLine.Text = "";
 	    CusEmail.Text = "";
     }
+
+    protected void LogoutButton_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("Login.aspx");
+    }
 }

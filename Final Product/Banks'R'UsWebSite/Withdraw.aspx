@@ -104,7 +104,7 @@
             </tr>
             <tr>
                 <td>
-                    <asp:Button ID="Logout" Text="Logout" runat="server" />
+                    <asp:Button ID="Logout" Text="Logout" runat="server" OnClick="LogoutButton_Click"/>
                 </td>
                 <td class="auto-style7">
                     <asp:Label ID="Error" runat="server" Text=" " />

@@ -88,7 +88,7 @@
                         </tr>
                         <tr>
                             <td>
-                                <asp:button id="Submit" Text="Submit" onclick="Submit_Click" runat="server"/>
+                                <asp:button id="Submit" Text="Submit" runat="server"/>
                             </td>
                         </tr>
                         <tr>
@@ -101,7 +101,7 @@
             </tr>
             <tr>
                 <td>
-                    <asp:Button ID="Logout" Text="Logout" runat="server" />
+                    <asp:Button ID="Logout" Text="Logout" runat="server"  OnClick="LogoutButton_Click"/>
                 </td>
             </tr>
         </table>

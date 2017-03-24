@@ -12,7 +12,20 @@
         <table>
             <tr>
                 <td>
+                </td>
+                <td>
+                    Prefix(For Managers)
+                </td>
+                <td>
+                    Regular ID Number
+                </td>
+            </tr>
+            <tr>
+                <td>
                      User ID:
+                </td>
+                <td>
+                    <asp:TextBox ID="UserIDPrefix" runat = "server"/>
                 </td>
                 <td>
                     <asp:TextBox ID="UserID" runat = "server"/>

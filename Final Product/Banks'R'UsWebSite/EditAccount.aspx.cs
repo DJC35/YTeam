@@ -57,4 +57,9 @@ public partial class EditAccount : System.Web.UI.Page
         CustomerID.Text = "";
         AccountNumber.Text = "";
     }
+
+    protected void LogoutButton_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("Login.aspx");
+    }
 }
