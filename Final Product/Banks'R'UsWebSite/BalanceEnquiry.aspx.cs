@@ -59,4 +59,8 @@ public partial class BalanceEnquiry : Page
         AccountNumber.Text = "";
         Output.Text = "";
     }
+    protected void LogoutButton_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("Login.aspx");
+    }
 }
