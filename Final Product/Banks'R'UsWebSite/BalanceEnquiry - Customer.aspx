@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="BalanceEnquiry - Customer.aspx.cs" Inherits="BalanceEnquiry" %>
+<%@ Page Language="C#" AutoEventWireup="true" CodeFile="BalanceEnquiry - Customer.aspx.cs" Inherits="BalanceEnquiry" %>
 
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
