@@ -47,27 +47,28 @@
             </tr>
             <tr>
                 <td>
-                    <!--Output Area-->
+                  <asp:Label ID="Output" runat="server" Text=""></asp:Label>
                 </td>
                 <td>
                     <h3>Balance Enquiry</h3>
                     <table>
+                        
                         <tr>
                             <td>
                                 Account Number
                             </td>
                             <td>
-                                <input id="AccountNumber" type="text" />
+                                <asp:Textbox id="AccountNumber" runat="server" />
                             </td>
                         </tr>                          
                         <tr>
                             <td>
-                                <input id="Submit" type="button" value="Submit" />
+                                <asp:Button id="Submit"  Text="Submit" onclick="Submit_Click" runat="server" />
                             </td>
                         </tr>
                         <tr>
                             <td>
-                                <input id="Reset" type="button" value="Reset" />
+                                <asp:Button id="Reset"  Text="Reset" onclick="Reset_Click" runat="server" />
                             </td>
                         </tr>
                     </table>
@@ -75,7 +76,7 @@
             </tr>
             <tr>
                 <td>
-                    <asp:Button ID="Logout" Text="Logout" runat="server"  OnClick="LogoutButton_Click"/>
+                    <asp:Button ID="Logout" Text="Logout" runat="server" />
                 </td>
             </tr>
         </table>
